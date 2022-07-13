@@ -5,8 +5,8 @@ const Home = () => {
   return (
     <div>
       <div className='bg-main-teal w-[100%] '>
-        <div className='container_app h-[475px] mx-auto px-[150px]'>
-          <div className='flex h-[100%] justify-between'>
+        <div className='container_app mx-auto px-[150px]'>
+          <div className='flex h-[475px] justify-between'>
             <div className='flex flex-col w-[590px] h-[100%] py-[60px]'>
               <div className='text-[2rem] text-white font-black leading-9 mt-[30px]'>アプリで消防設備点検をらくらく管理</div>
               <div className='text-[14.5px] text-white leading-[22px] mt-[20px]'>MAPICON（マビコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。</div>
@@ -46,6 +46,39 @@ const Home = () => {
                 width={255}
                 height={430}
               />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-[100%]">
+        <div className='container_app mx-auto px-[150px]'>
+          <div className='flex h-[100%] justify-center align-center'>
+              <div className='text-[2rem] font-black mt-[80px] relative after:content-[""] after:bg-main-teal after:w-[100%] after:h-[35%] after:-z-10 after:bottom-0 after:left-0 after:absolute'>MAPICON3つの特徴</div>
+          </div>
+          <div className='flex h-[100%] justify-between mt-[40px]'>
+            <div className='flex flex-col justtify-center items-center gap-x-[40px]'>
+              <div className='flex relative items-center'>
+                <div className="text-[1.35rem] font-black">アプリで点検管理</div>
+                <div className='flex bg-main-orange w-[30px] h-[30px] text-white font-[800] justify-center items-center absolute -left-[50px] rounded-full'>1</div>
+              </div>
+              <div className='mt-[25px]'>
+                <Image
+                  src="/images/feature1.png"
+                  alt="feature1"
+                  className='h-[295px]'
+                  objectFit="scale-down"
+                  width={"100%"}
+                  height={295}
+                />
+              </div>
+            </div>
+            <div className='flex flex-col'>
+              <div>TITLE</div>
+              <div>IMAGE</div>
+            </div>
+            <div className='flex flex-col'>
+              <div>TITLE</div>
+              <div>IMAGE</div>
             </div>
           </div>
         </div>

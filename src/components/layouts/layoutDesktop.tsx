@@ -30,7 +30,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
                 <div className='text-main-grey text-sm font-[500]  py-[10px] rounded'>MAPICONの特徴</div>
                 <div className='text-main-grey text-sm font-[500]  py-[10px] rounded'>料金プラン</div>
                 <div className='text-main-grey text-sm font-[500]  py-[10px] rounded'>よくあるご質問</div>
-                <div className='bg-main-orange text-white text-sm font-[500] px-[25px] py-[10px] rounded'>資料請求・利用のお申込み</div>
+                <div className='bg-main-orange text-white text-sm font-[500] px-[25px] py-[12px] rounded'>資料請求・利用のお申込み</div>
               </div>
             </div>
           </div>
