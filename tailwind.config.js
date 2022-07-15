@@ -4,7 +4,6 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -18,19 +17,26 @@ module.exports = {
         "sub-grey": "#7F7F7F",
         "sub-background": "#F7A67A",
         "grey-background": "#F0F2F5",
-        "sub-greybackground": "#F3F3F3"
+        "sub-greybackground": "#F3F3F3",
+        "und-orange": "#FFAE84"
       }
     },
     screens: {
+      'lg': {
+        'max': '1280px'
+      },
       'md': {
-        'max': '1250px'
+        'max': '1024px'
       },
       'sm': {
         'max': '768px'
       },
       'xs': {
-        'max': '500px'
+        'max': '640px'
       },
+      '2xs': {
+        'max': '375px'
+      }
     }
   },
   corePlugins: {

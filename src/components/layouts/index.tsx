@@ -1,12 +1,11 @@
-import Head from 'next/head';
 import React, { FC, useState } from 'react';
 import useMobileDetect from '../../hooks/useMobileDetect';
 import LayoutDesktop from './layoutDesktop';
 import LayoutMobile from './layoutMobile';
 
 interface IProps {
-  children: React.ReactElement
-  head?: React.ReactElement
+  children: React.ReactElement;
+  head?: React.ReactElement;
 }
 
 const UIRender: FC<IProps> = ({ head, children }: IProps) => {
@@ -19,7 +18,7 @@ const UIRender: FC<IProps> = ({ head, children }: IProps) => {
   return isMobile == null ? (
     <></>
   ) : isMobile == true ? (
-    <LayoutMobile head={head}>{children}</LayoutMobile>
+    <LayoutDesktop head={head}>{children}</LayoutDesktop>
   ) : (
     <LayoutDesktop head={head}>{children}</LayoutDesktop>
   );
