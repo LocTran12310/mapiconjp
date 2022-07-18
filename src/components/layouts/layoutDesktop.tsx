@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import { BASE_CONSTANTS } from '../../constants/base.constants';
 import HeadHtml from './HeadHtml';
 
-export interface IProps {
+interface IProps {
   children: React.ReactElement;
   head?: React.ReactElement;
 }
@@ -81,15 +81,15 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
           </div>
         </div>
       </header>
-      <div className={`${toggle ? 'md:block hidden' : 'hidden'} bg-white w-[100vw] h-[100vh] pt-[80px] fixed z-50 transition duration-300`}>
+      <div className={`${toggle ? 'md:block visible opacity-100' : 'invisible opacity-0'} bg-white w-[100vw] h-[100vh] pt-[80px] fixed z-50 transition-[visibility] transition-[opacity]`}>
         <div className='container_app w-full h-full sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
           <a 
             href={`${tabs[3]?.link}`}
             target='_blank'
             rel="noreferrer"
-            className='flex bg-main-orange h-[70px] mt-[30px] justify-center items-center rounded-md relative hover:opacity-[0.8]'
+            className='flex bg-main-orange h-[70px] mx-auto mt-[30px] justify-center items-center rounded-md relative hover:opacity-[0.8]'
           >
-            <div className='text-lg text-white'>ご利用のお申込みはこちら</div>
+            <div className='3xs:text-base text-lg text-white'>ご利用のお申込みはこちら</div>
             <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
               <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
             </div>

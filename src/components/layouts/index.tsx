@@ -18,7 +18,7 @@ const UIRender: FC<IProps> = ({ head, children }: IProps) => {
   return isMobile == null ? (
     <></>
   ) : isMobile == true ? (
-    <LayoutDesktop head={head}>{children}</LayoutDesktop>
+    <LayoutMobile head={head}>{children}</LayoutMobile>
   ) : (
     <LayoutDesktop head={head}>{children}</LayoutDesktop>
   );
