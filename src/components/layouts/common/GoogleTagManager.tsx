@@ -1,6 +1,6 @@
 import Script from "next/script";
 import React, { useEffect, useState } from "react";
-import { BASE_CONSTANTS, DEV_ENV } from "../../constants/base.constants";
+import { BASE_CONSTANTS, DEV_ENV } from "../../../constants/base.constants";
 
 const GoogleTagManager = () => {
   const [isDevEnvironment, setDevEnvironment] = useState(true)

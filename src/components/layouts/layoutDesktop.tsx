@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import React, { FC } from 'react';
 import { BASE_CONSTANTS } from '../../constants/base.constants';
-import HeadHtml from './HeadHtml';
+import Footer from './common/Footer';
+import HeadHtml from './common/HeadHtml';
 
 interface IProps {
   children: React.ReactElement;
@@ -17,7 +18,7 @@ const tabs = [
   {
     id: 3,
     title: '資料請求・利用のお申込み',
-    link: 'https://docs.google.com/forms/d/1oj8T9cpGYfFo3BRgINQZWhhFGfSz2gMs6dCPjPFZGkM/viewform?edit_requested=truePreview'
+    link: BASE_CONSTANTS.APPLY_LINK
   },
 ]
 
@@ -116,19 +117,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
       </div>
       {head}
       <main>{children}</main>
-      <footer className='w-full bg-sub-greybackground'>
-        <div className='container_app mx-auto my-auto sm:px-[15px] md:px-[100px] xl:px-[150px] px-[150px] py-[35px] text-sm'>
-          <div className='flex sm:flex-col h-[100%] sm:justify-start justify-between'>
-            <div className='flex sm:flex-col gap-y-[15px] gap-x-[30px] text-sub-grey'>
-              <a href='https://omyco.work/' target='_blank' rel="noreferrer" className='hover:text-main-orange'>会社概要</a>
-              <a href={`${BASE_CONSTANTS.BASE_URL}/privacy`} target='_blank' rel="noreferrer" className='hover:text-main-orange'>プライバシーポリシー</a>
-              <div className='hover:text-main-orange'>お問い合わせ</div>
-            </div>
-            <div className='w-[100%] bg-grey-background border-[1px] sm:block hidden mt-[40px] mb-[25px]'></div>
-            <div className='text-sub-grey sm:text-center'>© 2022 OMY, Inc. All Rights Reserved.</div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </React.Fragment>
   )
 }

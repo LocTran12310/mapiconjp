@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-sync-scripts */
-import Head from 'next/head';
 import Link from 'next/link';
-import Script from 'next/script'
 import React, { FC } from 'react';
-import { BASE_CONSTANTS } from '../constants/base.constants';
+import Footer from './common/Footer';
+import HeadHtml from './common/HeadHtml';
 
 interface IProps {
   children: React.ReactElement;
@@ -24,26 +23,7 @@ const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
 
   return (
     <React.Fragment>
-      <Head>
-        <title>MAPICON（マピコン）｜消防設備点検アプリ</title>
-        <meta name="description" content="MAPICON（マピコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。今すぐアプリをダウンロード！"/>
-        <link rel="canonical" href={BASE_CONSTANTS.BASE_URL}/>
-
-        <meta property="og:description" content="MAPICON（マピコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。今すぐアプリをダウンロード！"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:url" content={BASE_CONSTANTS.BASE_URL}/>
-        <meta property="og:image" content={`${BASE_CONSTANTS.BASE_URL}images/ogp.png`}/>
-        <meta property="og:site_name" content="MAPICON"/>
-      </Head>
-      <Script id="google-tag-manager" strategy="afterInteractive">
-      {`
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','${BASE_CONSTANTS.GTM_ID}');
-      `}
-      </Script>
+      <HeadHtml />
       <header className='w-full fixed z-[999]'>
         <div className='bg-white shadow-md w-full relative'>
           <div className='container_app h-[80px] mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
@@ -96,19 +76,7 @@ const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
       </div>
       {head}
       <main>{children}</main>
-      <footer className='w-full bg-sub-greybackground'>
-        <div className='container_app mx-auto my-auto sm:px-[15px] md:px-[100px] xl:px-[150px] px-[150px] py-[35px] text-sm'>
-          <div className='flex sm:flex-col h-[100%] sm:justify-start justify-between'>
-            <div className='flex sm:flex-col gap-y-[15px] gap-x-[30px] text-sub-grey'>
-              <div>会社概要</div>
-              <div>プライバシーポリシー</div>
-              <div>お問い合わせ</div>
-            </div>
-            <div className='w-[100%] bg-grey-background border-[1px] sm:block hidden mt-[40px] mb-[25px]'></div>
-            <div className='text-sub-grey sm:text-center'>© 2022 OMY, Inc. All Rights Reserved.</div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </React.Fragment>
   )
 }

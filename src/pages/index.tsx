@@ -164,7 +164,7 @@ const Home = () => {
               <h2 className='text-[14.5px] text-white leading-[22px] mt-[20px]'>MAPICON（マビコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。</h2>
               <div className='flex md:flex-col mt-[45px] gap-y-[20px] gap-x-[20px]'>
                 <a
-                  href={`https://docs.google.com/forms/d/1oj8T9cpGYfFo3BRgINQZWhhFGfSz2gMs6dCPjPFZGkM/viewform?edit_requested=truePreview`}
+                  href={BASE_CONSTANTS.APPLY_LINK}
                   target='_blank'
                   rel="noreferrer"
                   className='flex bg-main-orange md:max-w-[380px] md:w-full w-[380px] h-[70px] justify-center items-center rounded-md relative hover:opacity-[0.8]'
