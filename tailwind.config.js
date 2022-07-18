@@ -36,6 +36,9 @@ module.exports = {
       },
       '2xs': {
         'max': '375px'
+      },
+      '3xs': {
+        'max': '320px'
       }
     }
   },

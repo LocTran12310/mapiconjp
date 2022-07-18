@@ -72,82 +72,81 @@ const Accordion = ({ title, content }: typeof accordions[0]) => {
   const [isActive, setIsActive] = useState(false);
   
   return (
-    <div className='flex flex-col bg-grey-background px-[20px] py-[15px] rounded-md transition-all duration-500'>
+    <div className='flex flex-col bg-grey-background px-[20px] py-[15px] rounded-md'>
       <div className='flex justify-between items-center'>
         <div className='text-[0.9rem] font-bold'>{title}</div>
-        <div className='flex bg-main-orange w-[30px] h-[30px] text-[1.25rem] text-white justify-center items-center rounded-[3px] cursor-pointer' onClick={() => {setIsActive(!isActive)}}>{isActive ? 'ー' : '＋'}</div>
+        <div className='flex bg-main-orange min-w-[30px] w-[30px] min-h-[30px] h-[30px] text-[1.25rem] text-white justify-center items-center ml-[7.5px] rounded-[3px] cursor-pointer' onClick={() => {setIsActive(!isActive)}}>{isActive ? 'ー' : '＋'}</div>
       </div>
-      <div className={`transition-all duration-300 ${isActive ? 'block': 'hidden'}`}>
-        <div className='w-[100%] border-[1px] bg-sub-grey my-[15px]'></div>
+      <div className={`${isActive ? 'max-h-[999px]': 'max-h-[0px]'} w-[100%] transition-[max-height] overflow-hidden`}>
+        <div className='border-[1px] bg-sub-grey my-[15px]'></div>
         <div className='text-[0.9rem]'>{content}</div>
       </div>
     </div>
   );
 }
 
-const Home = () => {
-
-  const PlanCard = (props: {card: typeof cards[0]}) => {
-    const card = props.card;
-    return (
-      <div className='flex flex-col bg-white min-w-[270px] max-w-[270px] items-center  rounded-lg overflow-hidden shadow-xl'>
-        <div className={`flex ${card.bgColor} w-[100%] h-[70px] text-[1.15rem] text-white justify-center items-center`}>{card.title}</div>
-        <div className='flex w-[100%] items-center px-[20px] py-[16px]'>
-          <div className='w-[50%] font-semibold'>初期費用</div>
-          <div className='flex items-center'>
-              <span className={`text-[1.5rem] ${card.txtColor} px-[6px] leading-[20px]`}>{card.initalCost}</span>
-              円
-            </div>
-        </div>
-        <div className='w-[100%] border-[1px] border-dashed'></div>
-        <div className='flex w-[100%] items-center px-[20px] py-[16px]'>
-          <div className='w-[50%] font-semibold'>月額費用</div>
-          <div className='flex flex-col w-[50%]'>
-            <div className='flex text-[0.85rem] items-center '>
-              <span className={`text-[1.5rem] ${card.txtColor} px-[6px] leading-[20px]`}>{card.monthlyCost}</span>
-              円
-            </div>
-            <div className='text-[0.75rem] pt-[2px]'>（{card.subMonthlyCost}）</div>
+const PlanCard = (props: {card: typeof cards[0]}) => {
+  const card = props.card;
+  return (
+    <div className='flex flex-col bg-white min-w-[270px] max-w-[270px] items-center  rounded-lg overflow-hidden shadow-xl'>
+      <div className={`flex ${card.bgColor} w-[100%] h-[70px] text-[1.15rem] text-white justify-center items-center`}>{card.title}</div>
+      <div className='flex w-[100%] items-center px-[20px] py-[16px]'>
+        <div className='w-[50%] font-semibold'>初期費用</div>
+        <div className='flex items-center'>
+            <span className={`text-[1.5rem] ${card.txtColor} px-[6px] leading-[20px]`}>{card.initalCost}</span>
+            円
           </div>
-        </div>
-        <div className='w-[100%] border-[1px] border-dashed'></div>
-        <div className='flex w-[100%] items-center px-[20px] py-[16px]'>
-          <div className='w-[50%] font-semibold'>点検者数</div>
-          <div className='flex flex-col w-[50%]'>
-            <div className='flex items-center px-[6px] leading-[20px]'>
-              {card.numOfInspectors}
-            </div>
+      </div>
+      <div className='w-[100%] border-[1px] border-dashed'></div>
+      <div className='flex w-[100%] items-center px-[20px] py-[16px]'>
+        <div className='w-[50%] font-semibold'>月額費用</div>
+        <div className='flex flex-col w-[50%]'>
+          <div className='flex text-[0.85rem] items-center '>
+            <span className={`text-[1.5rem] ${card.txtColor} px-[6px] leading-[20px]`}>{card.monthlyCost}</span>
+            円
           </div>
-        </div>
-        <div className='w-[100%] border-[1px] border-dashed'></div>
-        <div className='flex w-[100%] items-center px-[20px] py-[16px]'>
-          <div className='w-[50%] font-semibold'>防火対象物数</div>
-          <div className='flex flex-col w-[50%]'>
-            <div className='flex items-center px-[6px] leading-[20px]'>
-              {card.numOfBuildings}
-            </div>
-          </div>
-        </div>
-        <div className='w-[100%] border-[1px] border-dashed'></div>
-        <div className='flex flex-col w-[100%] justify-center items-center px-[20px] py-[20px]'>
-          <div className='text-[0.9rem] font-bold'>こんな方におすすめ！</div>
-          <div className={`text-[0.9rem] ${card.txtColor} text-center font-bold pt-[12px] leading-[18px]`}>{card.brief}</div>
+          <div className='text-[0.75rem] pt-[2px]'>（{card.subMonthlyCost}）</div>
         </div>
       </div>
-    );
-  };
+      <div className='w-[100%] border-[1px] border-dashed'></div>
+      <div className='flex w-[100%] items-center px-[20px] py-[16px]'>
+        <div className='w-[50%] font-semibold'>点検者数</div>
+        <div className='flex flex-col w-[50%]'>
+          <div className='flex items-center px-[6px] leading-[20px]'>
+            {card.numOfInspectors}
+          </div>
+        </div>
+      </div>
+      <div className='w-[100%] border-[1px] border-dashed'></div>
+      <div className='flex w-[100%] items-center px-[20px] py-[16px]'>
+        <div className='w-[50%] font-semibold'>防火対象物数</div>
+        <div className='flex flex-col w-[50%]'>
+          <div className='flex items-center px-[6px] leading-[20px]'>
+            {card.numOfBuildings}
+          </div>
+        </div>
+      </div>
+      <div className='w-[100%] border-[1px] border-dashed'></div>
+      <div className='flex flex-col w-[100%] justify-center items-center px-[20px] py-[20px]'>
+        <div className='text-[0.9rem] font-bold'>こんな方におすすめ！</div>
+        <div className={`text-[0.9rem] ${card.txtColor} text-center font-bold pt-[12px] leading-[18px]`}>{card.brief}</div>
+      </div>
+    </div>
+  );
+};
 
+const Home = () => {
   return (
     <div>
-      <div className='bg-main-teal w-[100%] '>
+      <section className='bg-main-teal w-[100%] '>
         <div id='tab3' className='container_app mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
           <div className='flex sm:h-[100%] sm:pt-[85px] md:h-[615px] h-[555px] justify-between'>
             <div className='flex flex-col w-[590px] h-[100%] py-[60px]'>
               <h1 className='text-[2rem] text-white font-black leading-9 sm:mt-[10px] mt-[105px]'>アプリで消防設備点検をらくらく管理</h1>
               <h2 className='text-[14.5px] text-white leading-[22px] mt-[20px]'>MAPICON（マビコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。</h2>
-              <div className='flex flex-col 2xs:w-[345px] w-[380px] gap-y-[20px]'>
+              <div className='flex flex-col max-w-[380px] gap-y-[20px]'>
                 <div className='flex bg-main-orange h-[70px] mt-[45px] justify-center items-center rounded-md relative'>
-                  <div className='text-lg text-white'>ご利用のお申込みはこちら</div>
+                  <div className='3xs:text-base text-lg text-white'>ご利用のお申込みはこちら</div>
                   <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
                     <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
                   </div>
@@ -182,13 +181,13 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className='w-[100%]'>
+      <section className='w-[100%]'>
         <div id='tab0' className='container_app mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
           <div className='sm:pb-[30px] py-[80px]'>
             <div className='flex h-[100%] justify-center align-center'>
-                <div className='text-[2rem] font-black relative after:content-[""] z-10 after:bg-und-orange after:w-[100%] after:h-[35%] after:-z-10 after:bottom-0 after:left-0 after:absolute'>MAPICON3つの特徴</div>
+                <div className='text-[1.78rem] font-black relative after:content-[""] z-10 after:bg-und-orange after:w-[100%] after:h-[35%] after:-z-10 after:bottom-0 after:left-0 after:absolute'>MAPICON3つの特徴</div>
             </div>
             <div className='flex h-[100%] md:flex-col justify-between gap-x-[40px]'>
               <div className='flex flex-col w-[100%] mt-[40px] justtify-center items-center'>
@@ -241,8 +240,8 @@ const Home = () => {
               </div>
             </div>
             <div className='flex flex-col h-[100%] justify-center align-center items-center mt-[80px]'>
-              <div className='sm:text-[1.4rem] text-[1.85rem] font-black'>報告書を作成するのが大変...</div>
-              <div className='sm:text-[1.5rem] text-[2rem] font-black leading-[30px]'>MAPICONで作業効率UP！</div>
+              <div className='3xs:text-[1.15rem] sm:text-[1.4rem] text-[1.85rem] font-black'>報告書を作成するのが大変...</div>
+              <div className='3xs:text-[1.25rem] sm:text-[1.5rem] text-[2rem] font-black leading-[30px]'>MAPICONで作業効率UP！</div>
             </div>
             <div className='flex sm:flex-col justify-center items-center mt-[50px] gap-x-[25px]'>
               <div className='flex max-h-[400px] relative'>
@@ -275,26 +274,27 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className='bg-grey-background w-[100%]'>
+      <section className='bg-grey-background w-[100%]'>
         <div id='tab1' className='container_app mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
           <div className='py-[80px]'>
             <div className='flex h-[100%] justify-center align-center'>
                 <div className='text-[1.78rem] font-black relative after:content-[""] z-10 after:bg-und-orange after:w-[100%] after:h-[35%] after:-z-10 after:bottom-0 after:left-0 after:absolute'>料金プラン</div>
             </div>
             <div className='flex h-[100%] xl:justify-center xl:items-center mt-[40px] pb-[40px] gap-x-[20px] lg:overflow-x-scroll z-100'>
-              <PlanCard card={cards[0]}/>
-              <PlanCard card={cards[1]}/>
-              <PlanCard card={cards[2]}/>
-              <PlanCard card={cards[3]}/>
+              {cards.map((card) => {
+                return (
+                  <PlanCard key={card.title} card={card}/>
+                );
+              })}
             </div>
             <div className='text-[0.9rem]'>※現在ご利用いただけるお支払い方法は、銀行振込となります。</div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className='bt-white w-[100%]'>
+      <section className='bt-white w-[100%]'>
         <div id='tab2' className='container_app mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
           <div className='py-[80px]'>
             <div className='flex h-[100%] justify-center align-center'>
@@ -307,7 +307,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

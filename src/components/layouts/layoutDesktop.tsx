@@ -4,13 +4,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script'
 import React, { FC } from 'react';
+import { BASE_CONSTANTS } from '../constants/base.constants';
 
-export interface IProps {
+interface IProps {
   children: React.ReactElement;
   head?: React.ReactElement;
 }
-
-const GTM_ID = 'GTM-55Z4P9G';
 
 const initalTabs = [
   {id: 0, title: 'MAPICONの特徴', isSelected: false},
@@ -53,12 +52,12 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
       <Head>
         <title>MAPICON（マピコン）｜消防設備点検アプリ</title>
         <meta name="description" content="MAPICON（マピコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。今すぐアプリをダウンロード！"/>
-        <link rel="canonical" href="https://mapicon.jp/"/>
+        <link rel="canonical" href={BASE_CONSTANTS.BASE_URL}/>
 
         <meta property="og:description" content="MAPICON（マピコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。今すぐアプリをダウンロード！"/>
         <meta property="og:type" content="website"/>
-        <meta property="og:url" content="https://mapicon.jp/"/>
-        <meta property="og:image" content="https://mapicon-dev.web.app/images/ogp.png"/>
+        <meta property="og:url" content={BASE_CONSTANTS.BASE_URL}/>
+        <meta property="og:image" content={`${BASE_CONSTANTS.BASE_URL}images/ogp.png`}/>
         <meta property="og:site_name" content="MAPICON"/>
       </Head>
       <Script id="google-tag-manager" strategy="afterInteractive">
@@ -67,7 +66,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','${GTM_ID}');
+        })(window,document,'script','dataLayer','${BASE_CONSTANTS.GTM_ID}');
       `}
       </Script>
       <header className='w-full fixed z-[999]'>
@@ -100,10 +99,10 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
           </div>
         </div>
       </header>
-      <div className={`${toggle ? 'md:block hidden' : 'hidden'} bg-white w-[100vw] h-[100vh] pt-[80px] fixed z-50 transition duration-300`}>
+      <div className={`${toggle ? 'md:block visible opacity-100' : 'invisible opacity-0'} bg-white w-[100vw] h-[100vh] pt-[80px] fixed z-50 transition-[visibility] transition-[opacity]`}>
         <div className='container_app w-full h-full sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
-          <div className='flex bg-main-orange h-[70px] mt-[30px] justify-center items-center rounded-md relative'>
-            <div className='text-lg text-white'>ご利用のお申込みはこちら</div>
+          <div className='flex bg-main-orange h-[70px] mx-auto mt-[30px] justify-center items-center rounded-md relative'>
+            <div className='3xs:text-base text-lg text-white'>ご利用のお申込みはこちら</div>
             <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
               <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
             </div>
