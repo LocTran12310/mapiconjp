@@ -1,44 +1,36 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-sync-scripts */
-import Head from 'next/head';
 import Link from 'next/link';
-import Script from 'next/script'
 import React, { FC } from 'react';
+import { BASE_CONSTANTS } from '../../constants/base.constants';
+import HeadHtml from './HeadHtml';
 
 export interface IProps {
   children: React.ReactElement;
   head?: React.ReactElement;
 }
 
-const GTM_ID = 'GTM-55Z4P9G';
-
-const initalTabs = [
-  {id: 0, title: 'MAPICONの特徴', isSelected: false},
-  {id: 1, title: '料金プラン', isSelected: false},
-  {id: 2, title: 'よくあるご質問', isSelected: false},
-  {id: 3, title: '資料請求・利用のお申込み', isSelected: true},
+const tabs = [
+  {id: 0, title: 'MAPICONの特徴'},
+  {id: 1, title: '料金プラン'},
+  {id: 2, title: 'よくあるご質問'},
+  {
+    id: 3,
+    title: '資料請求・利用のお申込み',
+    link: 'https://docs.google.com/forms/d/1oj8T9cpGYfFo3BRgINQZWhhFGfSz2gMs6dCPjPFZGkM/viewform?edit_requested=truePreview'
+  },
 ]
 
 const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
-  const [tabs, setTabs] = React.useState(initalTabs);
   const [navbar, setNavbar] = React.useState(false);
   const [toggle, setToggle] = React.useState(false);
 
   React.useEffect(() => {
-    setTabs(tabs);
     changeNavbar()
     // adding the event when scroll change background
     window.addEventListener("scroll", changeNavbar)
   }, []);
 
-  const onSetTab = (id: number) => {
-    tabs.map((tab) => {
-      tab.isSelected = false;
-    });
-
-    tabs[id].isSelected = true;
-    setTabs([...tabs]);
-  };
 
   const changeNavbar = () => {
     if (window.scrollY >= 1 || window.matchMedia('(max-width: 1024px)').matches) {
@@ -50,26 +42,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
 
   return (
     <React.Fragment>
-      <Head>
-        <title>MAPICON（マピコン）｜消防設備点検アプリ</title>
-        <meta name="description" content="MAPICON（マピコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。今すぐアプリをダウンロード！"/>
-        <link rel="canonical" href="https://mapicon.jp/"/>
-
-        <meta property="og:description" content="MAPICON（マピコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。今すぐアプリをダウンロード！"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:url" content="https://mapicon.jp/"/>
-        <meta property="og:image" content="https://mapicon-dev.web.app/images/ogp.png"/>
-        <meta property="og:site_name" content="MAPICON"/>
-      </Head>
-      <Script id="google-tag-manager" strategy="afterInteractive">
-      {`
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','${GTM_ID}');
-      `}
-      </Script>
+      <HeadHtml/>
       <header className='w-full fixed z-[999]'>
         <div className={`${navbar && 'bg-white shadow-md'} w-full relative`}>
           <div className='container_app h-[80px] mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
@@ -85,9 +58,17 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
               </div>
               <div className='flex gap-x-[20px] md:hidden'>
                 {tabs.map((tab) => {
+                  if (tab?.link) {
+                    return (
+                      <a key={tab.id} href={tab.link} target='_blank' rel="noreferrer">
+                        <div className='bg-main-orange text-white px-[25px] py-[12px] text-white py-[10px] text-sm font-[500] rounded cursor-pointer hover:opacity-[0.8]' >{tab.title}</div>
+                      </a>
+                    );  
+                  }
                   return (
                     <Link key={tab.id} href={`#tab${tab.id}`} scroll={false}>
-                      <div className={`${tab.isSelected ? 'bg-main-orange text-white px-[25px] py-[12px]' : navbar ? 'text-main-grey py-[10px]' : 'text-white py-[10px]'} text-sm font-[500] rounded cursor-pointer`} onClick={() => onSetTab(tab.id)}>{tab.title}</div></Link>
+                      <div className={`${navbar ? 'text-main-grey py-[10px]' : 'text-white py-[10px]'} text-sm font-[500] rounded cursor-pointer hover:underline`}>{tab.title}</div>
+                    </Link>
                   );
                 })}
               </div>
@@ -102,12 +83,17 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
       </header>
       <div className={`${toggle ? 'md:block hidden' : 'hidden'} bg-white w-[100vw] h-[100vh] pt-[80px] fixed z-50 transition duration-300`}>
         <div className='container_app w-full h-full sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
-          <div className='flex bg-main-orange h-[70px] mt-[30px] justify-center items-center rounded-md relative'>
+          <a 
+            href={`${tabs[3]?.link}`}
+            target='_blank'
+            rel="noreferrer"
+            className='flex bg-main-orange h-[70px] mt-[30px] justify-center items-center rounded-md relative hover:opacity-[0.8]'
+          >
             <div className='text-lg text-white'>ご利用のお申込みはこちら</div>
             <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
               <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
             </div>
-          </div>
+          </a>
           <div className='bg-grey-background border-[1px] mt-[30px]'></div>
           {tabs.map((tab, index) => {
             if (index != tabs.length - 1)
@@ -134,9 +120,9 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
         <div className='container_app mx-auto my-auto sm:px-[15px] md:px-[100px] xl:px-[150px] px-[150px] py-[35px] text-sm'>
           <div className='flex sm:flex-col h-[100%] sm:justify-start justify-between'>
             <div className='flex sm:flex-col gap-y-[15px] gap-x-[30px] text-sub-grey'>
-              <div>会社概要</div>
-              <div>プライバシーポリシー</div>
-              <div>お問い合わせ</div>
+              <a href='https://omyco.work/' target='_blank' rel="noreferrer" className='hover:text-main-orange'>会社概要</a>
+              <a href={`${BASE_CONSTANTS.BASE_URL}/privacy`} target='_blank' rel="noreferrer" className='hover:text-main-orange'>プライバシーポリシー</a>
+              <div className='hover:text-main-orange'>お問い合わせ</div>
             </div>
             <div className='w-[100%] bg-grey-background border-[1px] sm:block hidden mt-[40px] mb-[25px]'></div>
             <div className='text-sub-grey sm:text-center'>© 2022 OMY, Inc. All Rights Reserved.</div>

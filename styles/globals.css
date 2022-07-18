@@ -14,7 +14,9 @@ body {
     "Hiragino Sans",
     Meiryo,
     sans-serif;
-  color: #444444
+  color: #444444;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container_app {
@@ -108,4 +110,39 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.privacy {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.privacy .container h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #333;
+  text-align: left;
+}
+
+.privacy .container h2 {
+  font-size: 16px;
+  font-weight: bold;
+  align-self: flex-start;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+
+.privacy .container ul:not(.list-none) {
+  list-style: disc;
+}
+
+.privacy .container li:not(.m-0) {
+  margin-left: 50px;
+  line-height: 28px;
+}
+
+.privacy .container a {
+  text-decoration: underline;
+  color:#31AEB2;
 }
