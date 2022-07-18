@@ -15,7 +15,7 @@ const HeadHtml = () => {
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="MAPICON（マピコン）"/>
         <meta property="og:url" content={`${BASE_CONSTANTS.BASE_URL}`}/>
-        <meta property="og:image" content={`${BASE_CONSTANTS.BASE_URL}/images/OGP.png`}/>
+        <meta property="og:image" content={`${BASE_CONSTANTS.BASE_URL}/images/ogp.png`}/>
         <meta property="og:site_name" content="MAPICON"/>
       </Head>
       <GoogleTagManager/>
