@@ -100,8 +100,8 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
             if (index != tabs.length - 1)
               return (
                 <Link key={tab.id} href={`#tab${tab.id}`} scroll={false} >
-                  <a>
-                    <div className='flex justify-between relative pt-[20px] cursor-pointer group' onClick={() => setToggle(false)}>
+                  <a className='cursor-pointer group' onClick={() => setToggle(false)}>
+                    <div className='flex justify-between relative pt-[20px]' >
                       <div className='text-[0.9rem] group-hover:text-main-orange'>{tab.title}</div>
                       <div className='flex w-[24px] h-[24px] justify-center items-center'>
                         <i className='transform rotate-45 -translate-x-0.5 border-[#B5B5B5] group-hover:border-main-orange border-t-[3px] border-r-[3px] p-[4px] rounded-[2px]'></i>
