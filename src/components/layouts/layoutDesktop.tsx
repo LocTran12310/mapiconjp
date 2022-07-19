@@ -62,13 +62,13 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
                   if (tab?.link) {
                     return (
                       <a key={tab.id} href={tab.link} target='_blank' rel="noreferrer">
-                        <div className='bg-main-orange text-white px-[25px] py-[12px] text-white py-[10px] text-sm font-[500] rounded cursor-pointer hover:opacity-[0.8]' >{tab.title}</div>
+                        <div className='bg-main-orange text-white px-[25px] py-[12px] text-white font-bold py-[10px] text-sm rounded cursor-pointer hover:opacity-[0.8]' >{tab.title}</div>
                       </a>
                     );  
                   }
                   return (
                     <Link key={tab.id} href={`#tab${tab.id}`} scroll={false}>
-                      <div className={`${navbar ? 'text-main-grey py-[10px]' : 'text-white py-[10px]'} text-sm font-[500] rounded cursor-pointer hover:underline`}>{tab.title}</div>
+                      <div className={`${navbar ? 'text-main-grey py-[10px]' : 'text-white py-[10px]'} font-bold text-sm rounded cursor-pointer hover:underline`}>{tab.title}</div>
                     </Link>
                   );
                 })}

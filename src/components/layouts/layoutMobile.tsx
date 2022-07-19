@@ -49,7 +49,7 @@ const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
       <div className={`${toggle ? 'visible opacity-100' : 'invisible opacity-0'} bg-white w-[100vw] h-[100vh] pt-[80px] fixed z-50 transition-[visibility] transition-[opacity]`}>
         <div className='container_app w-full h-full mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
           <div className='flex bg-main-orange h-[70px] mt-[30px] justify-center items-center rounded-md relative'>
-            <div className='3xs:text-base text-lg text-white'>ご利用のお申込みはこちら</div>
+            <div className='3xs:text-base text-lg text-white font-bold'>ご利用のお申込みはこちら</div>
             <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
               <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
             </div>
@@ -61,7 +61,7 @@ const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
                 <Link key={tab.id} href={`#tab${tab.id}`} scroll={true} >
                   <a className='cursor-pointer group' onClick={() => setToggle(false)}>
                     <div className='flex justify-between relative pt-[20px]' >
-                      <div className='text-[0.9rem] group-hover:text-main-orange'>{tab.title}</div>
+                      <div className='text-[0.9rem] group-hover:text-main-orange font-bold'>{tab.title}</div>
                       <div className='flex w-[24px] h-[24px] justify-center items-center'>
                         <i className='transform rotate-45 -translate-x-0.5 border-[#B5B5B5] group-hover:border-main-orange border-t-[3px] border-r-[3px] p-[4px] rounded-[2px]'></i>
                       </div>

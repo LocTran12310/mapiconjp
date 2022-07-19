@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
-import Layout from '../components/layouts';
+import Layout from '../components/layouts/layoutDesktop';
 import { BASE_CONSTANTS } from '../constants/base.constants';
 const cards = [
   {
@@ -83,15 +83,15 @@ const accordions = [
 ];
 
 
-const Accordion = ({ title, content }: typeof accordions[0]) => {
+const AccordionFAQ = ({ title, content }: typeof accordions[0]) => {
   const [isActive, setIsActive] = useState(false);
   const arrContents = content.split('<br/>')
   
   return (
-    <div className='flex flex-col bg-grey-background px-[20px] py-[15px] rounded-md'>
+    <div className='flex flex-col bg-grey-background px-[20px] py-[15px] rounded-md cursor-pointer' onClick={() => {setIsActive(!isActive)}}>
       <div className='flex justify-between items-center'>
         <div className='text-[0.9rem] font-bold'>{title}</div>
-        <div className='flex bg-main-orange min-w-[30px] w-[30px] min-h-[30px] h-[30px] text-[1.25rem] text-white ml-[7.5px] justify-center items-center rounded-[3px] cursor-pointer' onClick={() => {setIsActive(!isActive)}}>{isActive ? 'ー' : '＋'}</div>
+        <div className='flex bg-main-orange min-w-[30px] w-[30px] min-h-[30px] h-[30px] text-[1.25rem] text-white ml-[7.5px] justify-center items-center rounded-[3px] cursor-pointer'>{isActive ? 'ー' : '＋'}</div>
       </div>
       <div className={`${isActive ? 'max-h-[999px]': 'max-h-[0px]'} w-[100%] transition-[max-height] overflow-hidden`}>
         <div className='w-[100%] border-[1px] bg-sub-grey my-[15px]'></div>
@@ -161,7 +161,7 @@ const Home = () => {
           <div className='flex sm:h-[100%] sm:pt-[85px] md:h-[615px] h-[555px] justify-between'>
             <div className='flex flex-col w-[590px] h-[100%] py-[60px]'>
               <h1 className='text-[2rem] text-white font-black leading-9 sm:mt-[10px] mt-[105px]'>アプリで消防設備点検をらくらく管理</h1>
-              <h2 className='text-[14.5px] text-white leading-[22px] mt-[20px]'>MAPICON（マビコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。</h2>
+              <h2 className='text-[14.5px] text-white font-bold leading-[22px] mt-[20px]'>MAPICON（マビコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。</h2>
               <div className='flex md:flex-col mt-[45px] gap-y-[20px] gap-x-[20px]'>
                 <a
                   href={BASE_CONSTANTS.APPLY_LINK}
@@ -169,7 +169,7 @@ const Home = () => {
                   rel="noreferrer"
                   className='flex bg-main-orange md:max-w-[380px] md:w-full w-[380px] h-[70px] justify-center items-center rounded-md relative hover:opacity-[0.8]'
                 >
-                  <div className='3xs:text-base text-lg text-white'>ご利用のお申込みはこちら</div>
+                  <div className='3xs:text-base text-lg font-bold text-white'>ご利用のお申込みはこちら</div>
                   <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
                     <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
                   </div>
@@ -177,7 +177,7 @@ const Home = () => {
                 <a
                   href={BASE_CONSTANTS.APP_STORE}
                   target='_blank'
-                  className='flex h-[70px] max-w-[220px] cursor-pointer hover:opacity-[0.8]'
+                  className='flex h-[70px] max-w-[220px] cursor-pointer'
                   rel="noreferrer"
                 >
                   <img
@@ -187,7 +187,7 @@ const Home = () => {
                   />
                 </a>
               </div>
-              <div className='text-sm text-white mt-[10px]'>※アプリのご利用には、事前のお申込みが必要となります。</div>
+              <div className='1xs:text-[.8625rem] text-sm text-white font-bold mt-[10px]'>※アプリのご利用には、事前のお申込みが必要となります。</div>
             </div>
             <div className='flex flex-col h-[100%] sm:hidden md:pr-0 lg:pr-[20px] pr-[100px] justify-end'>
               <img
@@ -321,7 +321,7 @@ const Home = () => {
             </div>
             <div className='flex flex-col w-[100%] mt-[40px] gap-y-[20px]'>
               {accordions.map(({ title, content }, index) => (
-                <Accordion title={title} content={content} key={`${title}_${index}`}/>
+                <AccordionFAQ title={title} content={content} key={`${title}_${index}`}/>
               ))}
             </div>
           </div>

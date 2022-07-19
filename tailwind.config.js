@@ -34,6 +34,9 @@ module.exports = {
       'xs': {
         'max': '640px'
       },
+      '1xs': {
+        'max': '400px'
+      },
       '2xs': {
         'max': '375px'
       },
