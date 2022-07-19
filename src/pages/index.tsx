@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
-import Layout from '../components/layouts/layoutDesktop';
+import Layout from '../components/layouts';
 import { BASE_CONSTANTS } from '../constants/base.constants';
 const cards = [
   {
