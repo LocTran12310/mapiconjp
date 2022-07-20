@@ -32,7 +32,7 @@ const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
         <div className='bg-white shadow-md w-full relative'>
           <div className='container_app h-[80px] mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
             <div className='flex h-[100%] items-center justify-between'>
-              <div>
+              <a href={`${BASE_CONSTANTS.BASE_URL}`}>
                 <img
                   src='/images/logo-color.png'
                   alt="logo"
@@ -40,7 +40,7 @@ const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
                   width={200}
                   height={45}
                 />
-              </div>
+              </a>
               <div className='flex gap-x-[20px] md:hidden'>
                 {tabs.map((tab) => {
                   if (tab?.link) {
