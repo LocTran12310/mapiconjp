@@ -12,10 +12,14 @@ interface IProps {
 }
 
 const tabs = [
-  {id: 0, title: 'MAPICONの特徴', isSelected: false},
-  {id: 1, title: '料金プラン', isSelected: false},
-  {id: 2, title: 'よくあるご質問', isSelected: false},
-  {id: 3, title: '資料請求・利用のお申込み', isSelected: true},
+  {id: 0, title: 'MAPICONの特徴'},
+  {id: 1, title: '料金プラン'},
+  {id: 2, title: 'よくあるご質問'},
+  {
+    id: 3,
+    title: '資料請求・利用のお申込み',
+    link: BASE_CONSTANTS.APPLY_LINK  
+  },
 ]
 
 const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
@@ -48,12 +52,17 @@ const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
       </header>
       <div className={`${toggle ? 'visible opacity-100' : 'invisible opacity-0'} bg-white w-[100vw] h-[100vh] pt-[80px] fixed z-50 transition-[visibility] transition-[opacity]`}>
         <div className='container_app w-full h-full mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
-          <div className='flex bg-main-orange h-[70px] mt-[30px] justify-center items-center rounded-md relative'>
-            <div className='3xs:text-base text-lg text-white font-bold'>ご利用のお申込みはこちら</div>
+        <a 
+            href={`${tabs[3]?.link}`}
+            target='_blank'
+            rel="noreferrer"
+            className='flex bg-main-orange h-[70px] mx-auto mt-[30px] justify-center items-center rounded-md relative hover:opacity-[0.8]'
+          >
+            <div className='3xs:text-base text-lg text-white'>ご利用のお申込みはこちら</div>
             <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
               <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
             </div>
-          </div>
+          </a>
           <div className='bg-grey-background border-[1px] mt-[30px]'></div>
           {tabs.map((tab, index) => {
             if (index != tabs.length - 1)
