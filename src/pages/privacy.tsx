@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from '../components/layouts';
+import Layout from '../components/layouts/layoutMobile';
 import HeadHtml from '../components/layouts/common/HeadHtml';
 
 const Privacy = () => {

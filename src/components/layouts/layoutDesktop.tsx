@@ -43,7 +43,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
 
   return (
     <React.Fragment>
-      <HeadHtml/>
+      <HeadHtml />
       <header className='w-full fixed z-[999]'>
         <div className={`${navbar ? 'bg-white shadow-md' : 'bg-main-teal'}  w-full relative`}>
           <div className='container_app h-[80px] mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
@@ -67,7 +67,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
                     );  
                   }
                   return (
-                    <Link key={tab.id} href={`${BASE_CONSTANTS.BASE_URL}#tab${tab.id}`} scroll={false}>
+                    <Link key={tab.id} href={`${BASE_CONSTANTS.BASE_URL}#tab${tab.id}`} scroll={true}>
                       <div className={`${navbar ? 'text-main-grey py-[10px]' : 'text-white py-[10px]'} font-bold text-sm rounded cursor-pointer hover:underline`}>{tab.title}</div>
                     </Link>
                   );
@@ -84,13 +84,13 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
       </header>
       <div className={`${toggle ? 'md:block visible opacity-100' : 'invisible opacity-0'} bg-white w-[100vw] h-[100vh] pt-[80px] fixed z-50 transition-[visibility] transition-[opacity]`}>
         <div className='container_app w-full h-full sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
-          <a 
+          <a
             href={`${tabs[3]?.link}`}
             target='_blank'
             rel="noreferrer"
             className='flex bg-main-orange h-[70px] mx-auto mt-[30px] justify-center items-center rounded-md relative hover:opacity-[0.8]'
           >
-            <div className='3xs:text-base text-lg text-white'>ご利用のお申込みはこちら</div>
+            <div className='3xs:text-base text-lg text-white font-bold'>ご利用のお申込みはこちら</div>
             <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
               <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
             </div>
@@ -99,10 +99,10 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
           {tabs.map((tab, index) => {
             if (index != tabs.length - 1)
               return (
-                <Link key={tab.id} href={`${BASE_CONSTANTS.BASE_URL}#tab${tab.id}`} scroll={false} >
+                <Link key={tab.id} href={`${BASE_CONSTANTS.BASE_URL}#tab${tab.id}`} scroll={true}>
                   <a className='cursor-pointer group' onClick={() => setToggle(false)}>
                     <div className='flex justify-between relative pt-[20px]' >
-                      <div className='text-[0.9rem] group-hover:text-main-orange'>{tab.title}</div>
+                      <div className='text-[0.9rem] group-hover:text-main-orange font-bold'>{tab.title}</div>
                       <div className='flex w-[24px] h-[24px] justify-center items-center'>
                         <i className='transform rotate-45 -translate-x-0.5 border-[#B5B5B5] group-hover:border-main-orange border-t-[3px] border-r-[3px] p-[4px] rounded-[2px]'></i>
                       </div>
