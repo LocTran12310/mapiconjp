@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import Link from 'next/link';
 import React, { FC } from 'react';
+import { BASE_CONSTANTS } from '../../constants/base.constants';
 import Footer from './common/Footer';
 import HeadHtml from './common/HeadHtml';
 
@@ -19,7 +20,6 @@ const tabs = [
 
 const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
   const [toggle, setToggle] = React.useState(false);
-
 
   return (
     <React.Fragment>
@@ -58,7 +58,7 @@ const LayoutMobile: FC<IProps> = ({ head, children }: IProps) => {
           {tabs.map((tab, index) => {
             if (index != tabs.length - 1)
               return (
-                <Link key={tab.id} href={`#tab${tab.id}`} scroll={true} >
+                <Link key={tab.id} href={`${BASE_CONSTANTS.BASE_URL}#tab${tab.id}`} scroll={true} >
                   <a className='cursor-pointer group' onClick={() => setToggle(false)}>
                     <div className='flex justify-between relative pt-[20px]' >
                       <div className='text-[0.9rem] group-hover:text-main-orange font-bold'>{tab.title}</div>

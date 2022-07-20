@@ -1,12 +1,12 @@
 import React from "react";
+import Layout from '../components/layouts';
 import HeadHtml from '../components/layouts/common/HeadHtml';
-
 
 const Privacy = () => {
   return (
     <React.Fragment>
       <HeadHtml/>
-      <div className="privacy flex flex-col bg-[#333333]justify-start align-stretch p-[20px]">
+      <div className="privacy flex flex-col justify-start align-stretch p-[20px] pt-[80px]">
         <div className="container max-w-[1000px] p-[20px] self-center">
           <h1 id="-">個人情報保護方針</h1>
           <h2 id="1-">1. 個人情報に対する考え方</h2>
@@ -64,4 +64,5 @@ const Privacy = () => {
   );
 }
 
+Privacy.Layout = Layout;
 export default Privacy;

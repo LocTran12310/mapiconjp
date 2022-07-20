@@ -45,7 +45,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
     <React.Fragment>
       <HeadHtml/>
       <header className='w-full fixed z-[999]'>
-        <div className={`${navbar && 'bg-white shadow-md'} w-full relative`}>
+        <div className={`${navbar ? 'bg-white shadow-md' : 'bg-main-teal'}  w-full relative`}>
           <div className='container_app h-[80px] mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px]'>
             <div className='flex h-[100%] items-center justify-between'>
               <div>
@@ -67,7 +67,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
                     );  
                   }
                   return (
-                    <Link key={tab.id} href={`#tab${tab.id}`} scroll={false}>
+                    <Link key={tab.id} href={`${BASE_CONSTANTS.BASE_URL}#tab${tab.id}`} scroll={false}>
                       <div className={`${navbar ? 'text-main-grey py-[10px]' : 'text-white py-[10px]'} font-bold text-sm rounded cursor-pointer hover:underline`}>{tab.title}</div>
                     </Link>
                   );
@@ -99,7 +99,7 @@ const LayoutDesktop: FC<IProps> = ({ head, children }: IProps) => {
           {tabs.map((tab, index) => {
             if (index != tabs.length - 1)
               return (
-                <Link key={tab.id} href={`#tab${tab.id}`} scroll={false} >
+                <Link key={tab.id} href={`${BASE_CONSTANTS.BASE_URL}#tab${tab.id}`} scroll={false} >
                   <a className='cursor-pointer group' onClick={() => setToggle(false)}>
                     <div className='flex justify-between relative pt-[20px]' >
                       <div className='text-[0.9rem] group-hover:text-main-orange'>{tab.title}</div>

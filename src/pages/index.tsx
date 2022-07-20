@@ -88,16 +88,18 @@ const AccordionFAQ = ({ title, content }: typeof accordions[0]) => {
   const arrContents = content.split('<br/>')
   
   return (
-    <div className='flex flex-col bg-grey-background px-[20px] py-[15px] rounded-md cursor-pointer' onClick={() => {setIsActive(!isActive)}}>
-      <div className='flex justify-between items-center'>
+    <div className='flex flex-col bg-grey-background rounded-md'>
+      <div className='flex justify-between items-center px-[20px] py-[15px] cursor-pointer' onClick={() => {setIsActive(!isActive)}}>
         <div className='text-[0.9rem] font-bold'>{title}</div>
         <div className='flex bg-main-orange min-w-[30px] w-[30px] min-h-[30px] h-[30px] text-[1.25rem] text-white ml-[7.5px] justify-center items-center rounded-[3px] cursor-pointer'>{isActive ? 'ー' : '＋'}</div>
       </div>
       <div className={`${isActive ? 'max-h-[999px]': 'max-h-[0px]'} w-[100%] transition-[max-height] overflow-hidden`}>
-        <div className='w-[100%] border-[1px] bg-sub-grey my-[15px]'></div>
-        {arrContents.map(e => {
-          return (<div key={e} className='text-[0.9rem]'>{e}</div>);
-        })}
+        <div className='bg-sub-grey mx-[20px] border-[1px]'></div>
+        <div className='px-[20px] py-[15px]'>
+          {arrContents.map(e => {
+            return (<div key={e} className='text-[0.9rem]'>{e}</div>);
+          })}
+        </div>
       </div>
     </div>
   );
@@ -222,7 +224,7 @@ const Home = () => {
                     />
                 </div>
                 <div className='text-[0.85rem] mt-[35px]'>
-                スマホアプリだけで消防設備点検を実施できます。 特別 なITスキルは無くてもすぐにご利用いただけます。
+                スマホアプリだけで消防設備点検を実施できます。特別 なITスキルは無くてもすぐにご利用いただけます。
                 </div>
               </div>
               <div className='flex flex-col w-[100%] mt-[40px] justtify-center items-center'>
@@ -238,7 +240,7 @@ const Home = () => {
                     />
                 </div>
                 <div className='text-[0.85rem] mt-[35px]'>
-                アプリの点検結果からPDF形式で点検報告書を自動作 成します。 そのまま消防署等へご提出いただけます。
+                アプリの点検結果からPDF形式で点検報告書を自動作成します。そのまま消防署等へご提出いただけます。
                 </div>
               </div>
               <div className='flex flex-col w-[100%] mt-[40px] justtify-center items-center'>
@@ -330,5 +332,6 @@ const Home = () => {
     </div>
   )
 }
-Home.Layout = Layout
-export default Home
+
+Home.Layout = Layout;
+export default Home;
