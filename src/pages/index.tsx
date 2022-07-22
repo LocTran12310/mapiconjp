@@ -69,10 +69,6 @@ const accordions = [
       <br/>【点検表】様式16 誘導灯及び誘導標識`
   },
   {
-    title: 'お支払いの流れはどのようになりますか？',
-    content: '有料プランのお支払いは、毎月末日締め、翌月末日払いとなります。'
-  },
-  {
     title: '有料プランへの加入手続きはどのようになりますか？',
     content: 'フォームより有料プランへの利用申込み後、有料アカウントの発行手続きを行います。'
   },
@@ -163,7 +159,7 @@ const Home = () => {
           <div className='flex sm:h-[100%] sm:pt-[85px] md:h-[615px] h-[555px] justify-between'>
             <div className='flex flex-col w-[590px] h-[100%] py-[60px]'>
               <h1 className='text-[2rem] text-white font-black leading-9 sm:mt-[10px] mt-[105px]'>アプリで消防設備点検をらくらく管理</h1>
-              <h2 className='text-[14.5px] text-white font-bold leading-[22px] mt-[20px]'>MAPICON（マビコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。</h2>
+              <h2 className='text-[14.5px] text-white font-bold leading-[22px] mt-[20px]'>MAPICON（マピコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。</h2>
               <div className='flex md:flex-col mt-[45px] gap-y-[20px] gap-x-[20px]'>
                 <a
                   href={BASE_CONSTANTS.APPLY_LINK}
