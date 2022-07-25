@@ -22,6 +22,9 @@ module.exports = {
       }
     },
     screens: {
+      'xl': {
+        'max': '1440px'
+      },
       'lg': {
         'max': '1280px'
       },

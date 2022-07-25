@@ -299,7 +299,7 @@ const Home = () => {
             <div className='flex h-[100%] justify-center align-center'>
                 <div className='text-[1.78rem] font-black relative after:content-[""] z-10 after:bg-und-orange after:w-[100%] after:h-[35%] after:-z-10 after:bottom-0 after:left-0 after:absolute'>料金プラン</div>
             </div>
-            <div className='flex h-[100%] xl:justify-center xl:items-center mt-[40px] pb-[40px] gap-x-[20px] lg:overflow-x-scroll z-100'>
+            <div className='flex h-[100%] mt-[40px] pb-[40px] gap-x-[20px] lg:overflow-x-scroll z-100'>
               {cards.map((card) => {
                 return (
                   <PlanCard key={card.title} card={card}/>

@@ -146,3 +146,20 @@ a {
   text-decoration: underline;
   color:#31AEB2;
 }
+
+.law .container h2 {
+  font-size: 16px;
+  font-weight: bold;
+  align-self: flex-start;
+  margin-top: 30px;
+}
+
+
+.law .container ul:not(.list-none) {
+  list-style: disc;
+}
+
+.law .container li:not(.m-0) {
+  margin-left: 20px;
+  line-height: 28px;
+}

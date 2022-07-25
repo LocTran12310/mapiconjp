@@ -1,13 +1,13 @@
 import React from "react";
-import Layout from '../components/layouts/layoutMobile';
-import HeadHtml from '../components/layouts/common/HeadHtml';
+import Layout from '../../components/layouts/layoutMobile';
+import HeadHtml from '../../components/layouts/common/HeadHtml';
 
 const Privacy = () => {
   return (
     <React.Fragment>
       <HeadHtml/>
       <div className="privacy flex flex-col justify-start align-stretch p-[20px] pt-[80px]">
-        <div className="container max-w-[1000px] p-[20px] self-center">
+        <div className="container container_app w-full mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px] py-[20px]">
           <h1 id="-">個人情報保護方針</h1>
           <h2 id="1-">1. 個人情報に対する考え方</h2>
           <p>OMY株式会社（以下「当社」といいます。）は、事業活動を推進するにあたり、プライバシーの適切な保護の重要性と社会的責任を十分に認識し、個人情報の保護に関する法律（以下「個人情報保護法」といいます。）その他の関係法令を遵守いたします。</p>

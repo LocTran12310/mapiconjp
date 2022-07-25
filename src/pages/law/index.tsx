@@ -1,17 +1,17 @@
 import React from "react";
-import Layout from '../components/layouts/layoutMobile';
-import HeadHtml from '../components/layouts/common/HeadHtml';
-import { BASE_CONSTANTS } from "../constants/base.constants";
+import Layout from '../../components/layouts/layoutMobile';
+import HeadHtml from '../../components/layouts/common/HeadHtml';
+import { BASE_CONSTANTS } from "../../constants/base.constants";
 
 const Law = () => {
   return (
     <React.Fragment>
-      <HeadHtml/>
+      <HeadHtml title="MAPICON（マピコン）｜特定商取引法に基づく表示"/>
       <div className="law flex flex-col justify-start align-stretch pt-[80px]">
-        <div className="container py-[74px]" style={{backgroundImage: `url("/images/title-background.png")` }}>
-          <h1 className="text-center text-white font-bold text-2xl">特定商取引法公基了＜表記</h1>
+        <div className="container bg-cover py-[74px]" style={{backgroundImage: `url("/images/title-background.png")` }}>
+          <h1 className="text-center text-white font-bold text-2xl">特定商取引法に基づく表記</h1>
         </div>
-        <div className="container max-w-[1200px] p-[20px] self-center">
+        <div className="container container_app mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px] pt-[25px] pb-[50px]">
           <h2 id="1-">販売業者</h2>
           <p>OMY株式会社</p>
 
@@ -55,11 +55,11 @@ const Law = () => {
           
         </div>
         <hr/>
-        <div className="p-[20px]">
-          <div className="location text-sm">
+        <div className='container_app w-full mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px] py-[17px]'>
+          <div className="flex gap-x-[4px] text-[0.8rem]">
             <a className="home" href={`${BASE_CONSTANTS.BASE_URL}`}>TOP</a>
-            {'>'} 
-            <a href={`#`}>特定商取引法に基づく表示</a>
+            {'>'}
+            <a href='#' className='underline'>特定商取引法に基づく表示</a>
           </div>
         </div>
       </div>
