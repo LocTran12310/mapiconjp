@@ -5,7 +5,31 @@ import { BASE_CONSTANTS } from "../../constants/base.constants";
 import LineTextInput from "../../components/common/LineTextInput";
 import SectionTitle from "../../components/common/SectionTitle";
 
+const itemsSelect = [
+  {
+    label: "SELECT 1",
+    value: "1",
+  },
+  {
+    label: "SELECT 2",
+    value: "2",
+  },
+  {
+    label: "SELECT 3",
+    value: "3",
+  },
+];
+
+
 const Contact = () => {
+  const [ inquiryContentSelect, setInquiryContentSelect ] = React.useState("選択してください");
+  const onSelectInquiry = (
+    e: React.MouseEvent<HTMLLabelElement>,
+    item: {label: string; value: string}
+  ) => {
+    setInquiryContentSelect(item.label);
+  };
+
   return (
     <React.Fragment>
       <HeadHtml title="MAPICON（マピコン）｜お問い合わせ"/>
@@ -57,7 +81,7 @@ const Contact = () => {
               required
             />
 
-            <div className="mt-[20px]">
+            {/* <div className="mt-[20px]">
               <div className="font-bold label-field">
                 <label htmlFor="お問い合わせ内容必須">お問い合わせ内容必須</label>
                 <span className="bg-red-rq text-sm text-white px-[5px] py-[3px] ml-[5px] rounded-sm">必須</span>
@@ -84,7 +108,15 @@ const Contact = () => {
                   <option>SELECT 3</option>
                 </select>
               </div>
-            </div>
+            </div> */}
+
+            <SelectBoxField 
+              id="お問い合わせ内容必須" 
+              label="お問い合わせ内容必須" 
+              state={inquiryContentSelect}
+              items={itemsSelect}
+              onSelect={onSelectInquiry} 
+            />
 
             <div className="mt-[20px]">
               <div className="font-bold label-field">
@@ -125,6 +157,72 @@ const Contact = () => {
     </React.Fragment>
   );
 }
+
+const SelectBoxField = (props: any) => {
+  const [ isOpen, setOpen ] = React.useState(false);
+  const {id, state, label, children, required = true,
+    items = [],
+    onSelect = () => {
+      return;
+    }
+  } = props;
+
+  return (
+    <div className="mt-[20px]">
+      <div className="font-bold label-field">
+        <label htmlFor={id} onClick={() => {setOpen(!isOpen)}}>{id}</label>
+        {required && (
+          <span className="bg-red-rq text-sm text-white px-[5px] py-[3px] ml-[5px] rounded-sm">必須</span>
+        )}
+      </div>
+      <div className="mt-[10px] relative">
+        <label htmlFor={id} onClick={() => {setOpen(!isOpen)}}>
+          <div 
+            className={`
+              form-select 
+              bg-white bg-clip-padding bg-no-repeat
+              px-[15px] py-[10.5px]
+              border-[2px] border-input-grey rounded-[0.3rem]
+              ${isOpen ? " border-main-teal" : "" }
+              
+            `}
+          >
+            <span className="w-full">
+              {state}
+            </span>
+          </div>
+        </label>
+        <label htmlFor={id} className={`${isOpen ? "fixed block top-0 right-0 bottom-0 left-0 z-index-1" : "hidden"}`} onClick={() => setOpen(!isOpen)}></label>
+        <div className={`w-full ${isOpen ? "max-h-[150px]" : "max-h-[0px]"} transition-all duration-100 bg-transparent peer-checked:flex overflow-hidden absolute z-10`}>
+          <div className="bg-white rounded shadow border-[2px] border-main-grey mt-[10px] relative">
+            <div className="right-[12.5px] absolute top-0 transform -translate-x-1/2 translate-y-[-64%] -rotate-45 w-[10px] h-[10px] bg-white border-r-[2px] border-t-[2px] border-main-grey"></div>
+            <div className="px-[15px] py-[15px] relative z-30">
+              <div className="max-h-[150px] overflow-y-scroll">
+                <div className="flex flex-col">
+                  {items.map((item: any) => {
+                    return (
+                      <label
+                        key={item.label}
+                        htmlFor={id}
+                        onClick={(e) => {
+                          onSelect(e, item);
+                          setOpen(false);
+                        }}
+                        className="w-full hover:text-main-teal cursor-pointer"
+                      >
+                        <span className={`${item.label === state ? 'text-main-teal' : ''}`}>{item.label}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 Contact.Layout = Layout;
 export default Contact;
