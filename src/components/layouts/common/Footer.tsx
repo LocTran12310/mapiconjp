@@ -9,7 +9,8 @@ const Footer = () => {
             <a href='https://omyco.work/' target='_blank' rel="noreferrer" className='hover:underline'>会社概要</a>
             <a href={`${BASE_CONSTANTS.BASE_URL}/privacy.html`} target='_self' rel="noreferrer" className='hover:underline'>プライバシーポリシー</a>
             <a href={`${BASE_CONSTANTS.BASE_URL}/law.html`} target='_self' rel="noreferrer" className='hover:underline'>特定商取引法に基づく表示</a>
-            <a href={BASE_CONSTANTS.APPLY_LINK} target='_blank' rel="noreferrer" className='hover:underline'>お問い合わせ</a>
+            {/* <a href={BASE_CONSTANTS.APPLY_LINK} target='_blank' rel="noreferrer" className='hover:underline'>お問い合わせ</a> */}
+            <a href={`${BASE_CONSTANTS.BASE_URL}/contact.html`} target='_self' rel="noreferrer" className='hover:underline'>お問い合わせ</a>
           </div>
           <div className='w-[100%] bg-grey-background border-[1px] sm:block hidden mt-[40px] mb-[25px]'></div>
           <div className='text-sub-grey sm:text-center'>© 2022 OMY, Inc. All Rights Reserved.</div>

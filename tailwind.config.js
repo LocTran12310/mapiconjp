@@ -18,7 +18,9 @@ module.exports = {
         "sub-background": "#F7A67A",
         "grey-background": "#F0F2F5",
         "sub-greybackground": "#F3F3F3",
-        "und-orange": "#FFAE84"
+        "und-orange": "#FFAE84",
+        "red-rq": "#B1191D",
+        "input-grey": "#E1E1E1"
       }
     },
     screens: {
