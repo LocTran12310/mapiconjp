@@ -19,6 +19,34 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+.selectbox {
+  scrollbar-width: auto;
+}
+
+/* Chrome, Edge, and Safari */
+.selectbox::-webkit-scrollbar {
+  width: 10px;
+}
+
+.selectbox::-webkit-scrollbar-track {
+  border-radius: 6px;
+  background: #F9F9F9;
+  outline: 1px solid #C0C0C0;
+}
+
+.selectbox::-webkit-scrollbar-thumb {
+  background-color: #C0C0C0;
+  border-radius: 6px;
+  border: 2px solid #F9F9F9;
+  
+}
+
+.selectbox::-webkit-scrollbar-thumb:hover {
+  background-color: #7C7C7C;
+}
+
 .container_app {
   max-width: 1440px;
 }
