@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Head from "next/head"
 import React from "react";
 import { BASE_CONSTANTS } from "../../../constants/base.constants";
 import GoogleTagManager from "./GoogleTagManager";

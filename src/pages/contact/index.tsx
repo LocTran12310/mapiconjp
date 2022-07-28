@@ -67,7 +67,7 @@ const Contact = () => {
 
             <div className="mt-[20px]">
               <div className="font-bold label-field">
-                <label htmlFor="inquiryContentRequired">お問い合わせ内容必須</label>
+                <label htmlFor="inquiryContentRequired">お問い合わせ内容</label>
                 <span className="bg-red-rq text-sm text-white px-[5px] py-[3px] ml-[5px] rounded-sm">必須</span>
               </div>
               <div className="relative">
@@ -88,11 +88,12 @@ const Contact = () => {
                   "
                   required
                   >
-                  <option value="選択してください">選択してください</option>
-                  <option>SELECT 1</option>
-                  <option>SELECT 2</option>
-                  <option>SELECT 3</option>
-                </select>
+                  <option value="">選択してください</option>
+                  <option value="導入について">導入について</option>
+                  <option value="機能について">機能について</option>
+                  <option value="料金・お見積りについて">料金・お見積りについて</option>
+                  <option value="その他のお問い合わせ">その他のお問い合わせ</option>
+                  </select>
               </div>
             </div>
 
