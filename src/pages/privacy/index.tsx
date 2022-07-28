@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from '../../components/layouts/layoutMobile';
 import HeadHtml from '../../components/layouts/common/HeadHtml';
+import Link from "next/link";
 
 const Privacy = () => {
   return (
@@ -55,7 +56,7 @@ const Privacy = () => {
           <ul className="list-none">
             <li className="m-0">OMY株式会社</li>
             <li className="m-0">〒330-0842 埼玉県さいたま市大宮区浅間町2-83-3</li>
-            <li className="m-0">お問い合わせは、当社公式Webサイトの<a href="https://docs.google.com/forms/d/1oj8T9cpGYfFo3BRgINQZWhhFGfSz2gMs6dCPjPFZGkM/viewform?edit_requested=true">お問い合わせフォーム</a>よりお願いいたします。
+            <li className="m-0">お問い合わせは、当社公式Webサイトの<Link href="/contact"><a>お問い合わせフォーム</a></Link>よりお願いいたします。
             </li>
           </ul>
         </div>

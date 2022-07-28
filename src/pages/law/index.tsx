@@ -1,8 +1,12 @@
 import React from "react";
 import Layout from '../../components/layouts/layoutMobile';
 import HeadHtml from '../../components/layouts/common/HeadHtml';
-import { BASE_CONSTANTS } from "../../constants/base.constants";
 import SectionTitle from "../../components/common/SectionTitle";
+import Breadcrumb, { IBreadcrumb } from "../../components/common/Breadcrumb";
+
+const breadcrumbs = [
+  { title: "特定商取引法に基づく表示" }
+] as IBreadcrumb[];
 
 const Law = () => {
   return (
@@ -54,13 +58,7 @@ const Law = () => {
           
         </div>
         <hr/>
-        <div className='container_app w-full mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px] py-[17px]'>
-          <div className="flex gap-x-[4px] text-[0.8rem]">
-            <a className="home" href={`${BASE_CONSTANTS.BASE_URL}`}>TOP</a>
-            {'>'}
-            <a href='#' className='underline'>特定商取引法に基づく表示</a>
-          </div>
-        </div>
+        <Breadcrumb items={breadcrumbs}/>
       </div>
     </React.Fragment>
   );

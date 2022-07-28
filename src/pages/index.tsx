@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import React, { useState } from 'react';
 import Layout from '../components/layouts';
 import { BASE_CONSTANTS } from '../constants/base.constants';
@@ -161,17 +162,14 @@ const Home = () => {
               <h1 className='text-[2rem] text-white font-black leading-9 sm:mt-[10px] mt-[105px]'>アプリで消防設備点検をらくらく管理</h1>
               <h2 className='text-[14.5px] text-white font-bold leading-[22px] mt-[20px]'>MAPICON（マピコン）は、消防設備点検を効率化するDXアプリです。MAPICONのアプリを消防設備点検で利用することで、点検報告書を自動作成します。</h2>
               <div className='flex md:flex-col mt-[45px] gap-y-[20px] gap-x-[20px]'>
-                <a
-                  href={BASE_CONSTANTS.APPLY_LINK}
-                  target='_blank'
-                  rel="noreferrer"
-                  className='flex bg-main-orange md:max-w-[380px] md:w-full w-[380px] h-[70px] justify-center items-center rounded-md relative hover:opacity-[0.8]'
-                >
-                  <div className='3xs:text-base text-lg font-bold text-white'>ご利用のお申込みはこちら</div>
-                  <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
-                    <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
-                  </div>
-                </a>
+                <Link href="/contact">
+                  <a className='flex bg-main-orange md:max-w-[380px] md:w-full w-[380px] h-[70px] justify-center items-center rounded-md relative hover:opacity-[0.8]'>
+                    <div className='3xs:text-base text-lg font-bold text-white'>ご利用のお申込みはこちら</div>
+                    <div className='flex bg-white right-4 h-[24px] w-[24px] justify-center items-center rounded-full absolute'>
+                      <i className='transform rotate-45 -translate-x-0.5 border-main-orange border-t-[2px] border-r-[2px] p-[3px]'></i>
+                    </div>
+                  </a>
+                </Link>
                 <a
                   href={BASE_CONSTANTS.APP_STORE}
                   target='_blank'

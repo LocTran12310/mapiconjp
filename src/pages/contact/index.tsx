@@ -1,10 +1,14 @@
 import React from "react";
 import Layout from '../../components/layouts/layoutMobile';
 import HeadHtml from '../../components/layouts/common/HeadHtml';
-import { BASE_CONSTANTS } from "../../constants/base.constants";
 import TextInputField from "../../components/common/TextInputField";
 import SectionTitle from "../../components/common/SectionTitle";
+import Breadcrumb, { IBreadcrumb } from "../../components/common/Breadcrumb";
+import Link from "next/link";
 
+const breadcrumbs = [
+  { title: "お問い合わせ" } 
+] as IBreadcrumb[];
 
 const Contact = () => {
   const submitForm = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
@@ -54,6 +58,7 @@ const Contact = () => {
             <TextInputField
               label="メールアドレス"
               name="email"
+              type="email"
               placeholder="例：example@mapicon.jp"
               required
             />
@@ -61,6 +66,7 @@ const Contact = () => {
             <TextInputField
               label="電話番号"
               name="phone"
+              type="tel"
               placeholder="例：03-1234-5678"
               required
             />
@@ -111,7 +117,7 @@ const Contact = () => {
             </div>
 
             <div className="text-[0.85rem] text-center mt-[30px]">
-              <a className="text-sub-blue">プライバシーポリシー</a>
+              <Link href="/privacy"><a className="text-sub-blue">プライバシーポリシー</a></Link>
               に同意の上、送信をしてください。
             </div>
             <div className="text-center">
@@ -125,13 +131,7 @@ const Contact = () => {
           </form>
         </div>
         <hr/>
-        <div className='container_app w-full mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px] py-[17px]'>
-          <div className="flex gap-x-[4px] text-[0.8rem]">
-            <a className="home" href={`${BASE_CONSTANTS.BASE_URL}`}>TOP</a>
-            {'>'}
-            <a href='#' className='underline'>お問い合わせ</a>
-          </div>
-        </div>
+        <Breadcrumb items={breadcrumbs}/>
       </div>
     </React.Fragment>
   );
