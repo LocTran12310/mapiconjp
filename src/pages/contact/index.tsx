@@ -5,14 +5,35 @@ import TextInputField from "../../components/common/TextInputField";
 import SectionTitle from "../../components/common/SectionTitle";
 import Breadcrumb, { IBreadcrumb } from "../../components/common/Breadcrumb";
 import Link from "next/link";
+import { BASE_CONSTANTS } from "../../constants/base.constants";
 
 const breadcrumbs = [
   { title: "お問い合わせ" } 
 ] as IBreadcrumb[];
 
 const Contact = () => {
-  const submitForm = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    console.log("Submit")
+  const handleSubmitForm = async (e: any) => {
+    e.preventDefault()
+
+    const payload = {
+      companyName: e.target?.companyName?.value,
+      email: e.target?.email?.value,
+      lastName: e.target.lastName?.value,
+      firstName: e.target.firstName?.value,
+      phone: e.target.phone?.value,
+      purpose: e.target.purpose?.value,
+      note: e.target.note?.value,
+    }
+    const url = `${BASE_CONSTANTS.ADMIN_API_URL}/contact`;
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    })
+    const result = await response.json()
   };
 
   return (
@@ -21,7 +42,7 @@ const Contact = () => {
       <div className="pt-[80px]">
         <SectionTitle title="お問い合わせ"/>
         <div className="container_app flex justify-center w-full mx-auto sm:px-[15px] md:px-[60px] lg:px-[100px] px-[150px] pt-[60px] pb-[60px]">
-          <form id="formContact" action="GET" onSubmit={(e) => {e.preventDefault()}} className="w-full max-w-[560px]">
+          <form id="formContact" method="POST" className="w-full max-w-[560px]" onSubmit={handleSubmitForm}>
             <div>下記フォームに必要事項を入力し、「送信する」ボタンを押してください。</div>
 
             <TextInputField
@@ -33,20 +54,20 @@ const Contact = () => {
 
             <div className="mt-[20px]">
               <div className="font-bold label-field">
-                <label htmlFor="firstName">お名前</label>
+                <label htmlFor="lastName">お名前</label>
                 <span className="bg-red-rq text-sm text-white px-[5px] py-[3px] ml-[5px] rounded-sm">必須</span>
               </div>
               <div className="flex gap-x-[18px]">
                 <input
-                  id="firstName"
-                  name="firstName"
+                  id="lastName"
+                  name="lastName"
                   className="w-full border-[2px] border-input-grey rounded-[0.3rem] px-[15px] py-[10.5px] mt-[10px] focus:outline-main-teal"
                   type={"text"}
                   placeholder="姓"
                   required
                 />
                 <input
-                  name="lastName"
+                  name="firstName"
                   className="w-full border-[2px] border-input-grey rounded-[0.3rem] px-[15px] py-[10.5px] mt-[10px] focus:outline-main-teal"
                   type={"text"}
                   placeholder="名"
@@ -73,13 +94,13 @@ const Contact = () => {
 
             <div className="mt-[20px]">
               <div className="font-bold label-field">
-                <label htmlFor="inquiryContentRequired">お問い合わせ内容</label>
+                <label htmlFor="purpose">お問い合わせ内容</label>
                 <span className="bg-red-rq text-sm text-white px-[5px] py-[3px] ml-[5px] rounded-sm">必須</span>
               </div>
               <div className="relative">
                 <select 
-                  id="inquiryContentRequired"
-                  name="inquiryContentRequired"
+                  id="purpose"
+                  name="purpose"
                   className="
                     form-select
                     bg-white bg-clip-padding bg-no-repeat
@@ -105,12 +126,12 @@ const Contact = () => {
 
             <div className="mt-[20px]">
               <div className="font-bold label-field">
-                <label htmlFor="inquiryDetails">お問い合わせ詳細</label>
+                <label htmlFor="note">お問い合わせ詳細</label>
                 {/* <span className="bg-red-rq text-sm text-white px-[5px] py-[3px] ml-[5px] rounded-sm">必須</span> */}
               </div>
               <textarea
-                id="inquiryDetails"
-                name="inquiryDetails"
+                id="note"
+                name="note"
                 className="w-full h-[150px] border-[2px] border-input-grey rounded-[0.3rem] px-[15px] py-[10.5px] mr-[15px] mt-[10px] focus:outline-main-teal"
                 placeholder="お問い合わせ内容の詳細をご記入ください。"
               />
@@ -123,9 +144,8 @@ const Contact = () => {
             <div className="text-center">
               <input
                 className="bg-main-orange text-white text-center font-bold mt-[20px] px-[70px] h-[50px] rounded-sm cursor-pointer"
-                type={"submit"}
+                type="submit"
                 value="送信する"
-                onClick={(e) => {submitForm(e)}}
               />
             </div>
           </form>
